@@ -9,7 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src={bpnDevLogo} alt="Balikpapan.dev Logo" className="h-8 w-8 dark:brightness-125" />
+              <img src={bpnDevLogo} alt="Balikpapan.dev Logo" className="h-8 w-8 dark:invert" />
               <span className="text-lg font-bold bg-gradient-hero bg-clip-text text-transparent">
                 Balikpapan.dev
               </span>
