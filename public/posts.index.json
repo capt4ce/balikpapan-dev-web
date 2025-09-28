@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Kickoff: Balikpapan.dev",
+    "slug": "kickoff-balikpapan-dev",
+    "excerpt": "Kenapa komunitas ini ada dan cara ikut bergabung dengan kami.",
+    "author": "Team Balikpapan.dev",
+    "date": "2025-09-01",
+    "tags": ["community", "announcement", "kickoff"],
+    "pinned": true,
+    "readTime": "5 min read"
+  },
+  {
+    "id": 2,
+    "title": "Getting Started with React in 2025",
+    "slug": "getting-started-react-2025",
+    "excerpt": "Panduan lengkap memulai development dengan React untuk pemula.",
+    "author": "Sarah Aisyah",
+    "date": "2025-09-15",
+    "tags": ["react", "tutorial", "beginner"],
+    "pinned": false,
+    "readTime": "8 min read"
+  },
+  {
+    "id": 3,
+    "title": "Building Scalable APIs with Node.js",
+    "slug": "building-scalable-apis-nodejs",
+    "excerpt": "Best practices untuk membangun REST API yang scalable dan maintainable.",
+    "author": "Rizki Pratama",
+    "date": "2025-09-20",
+    "tags": ["nodejs", "api", "backend"],
+    "pinned": false,
+    "readTime": "12 min read"
+  },
+  {
+    "id": 4,
+    "title": "TypeScript Tips untuk Developer JavaScript",
+    "slug": "typescript-tips-javascript-developers",
+    "excerpt": "Tips dan trik menggunakan TypeScript untuk meningkatkan kualitas kode JavaScript.",
+    "author": "Ahmad Fauzi",
+    "date": "2025-09-25",
+    "tags": ["typescript", "javascript", "tips"],
+    "pinned": false,
+    "readTime": "6 min read"
+  },
+  {
+    "id": 5,
+    "title": "Introduction to Docker untuk Web Developers",
+    "slug": "introduction-docker-web-developers",
+    "excerpt": "Pelajari containerization dengan Docker dan bagaimana menerapkannya dalam development workflow.",
+    "author": "Indira Sari",
+    "date": "2025-09-28",
+    "tags": ["docker", "devops", "containerization"],
+    "pinned": false,
+    "readTime": "10 min read"
+  }
+]

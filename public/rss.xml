@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Balikpapan.dev</title>
+    <description>Balikpapan developer community - helping programmers grow and fostering the tech ecosystem in East Kalimantan</description>
+    <link>https://balikpapan.dev</link>
+    <atom:link href="https://balikpapan.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    <language>id-ID</language>
+    <lastBuildDate>Sat, 28 Sep 2025 00:00:00 GMT</lastBuildDate>
+    <generator>Balikpapan.dev</generator>
+    
+    <item>
+      <title>Kickoff: Balikpapan.dev</title>
+      <description>Kenapa komunitas ini ada dan cara ikut bergabung dengan kami.</description>
+      <link>https://balikpapan.dev/posts/1</link>
+      <guid>https://balikpapan.dev/posts/1</guid>
+      <pubDate>Sun, 01 Sep 2025 00:00:00 GMT</pubDate>
+      <author>Team Balikpapan.dev</author>
+    </item>
+    
+    <item>
+      <title>Getting Started with React in 2025</title>
+      <description>Panduan lengkap memulai development dengan React untuk pemula.</description>
+      <link>https://balikpapan.dev/posts/2</link>
+      <guid>https://balikpapan.dev/posts/2</guid>
+      <pubDate>Mon, 15 Sep 2025 00:00:00 GMT</pubDate>
+      <author>Sarah Aisyah</author>
+    </item>
+    
+  </channel>
+</rss>
