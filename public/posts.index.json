@@ -8,7 +8,8 @@
     "date": "2025-09-01",
     "tags": ["community", "announcement", "kickoff"],
     "pinned": true,
-    "readTime": "5 min read"
+    "readTime": "5 min read",
+    "coverImage": "/images/kickoff.jpg"
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "date": "2025-09-15",
     "tags": ["react", "tutorial", "beginner"],
     "pinned": false,
-    "readTime": "8 min read"
+    "readTime": "8 min read",
+    "coverImage": "/images/react-2025.jpg"
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "date": "2025-09-20",
     "tags": ["nodejs", "api", "backend"],
     "pinned": false,
-    "readTime": "12 min read"
+    "readTime": "12 min read",
+    "coverImage": "/images/nodejs-api.jpg"
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "date": "2025-09-25",
     "tags": ["typescript", "javascript", "tips"],
     "pinned": false,
-    "readTime": "6 min read"
+    "readTime": "6 min read",
+    "coverImage": "/images/typescript-tips.jpg"
   },
   {
     "id": 5,
@@ -52,6 +56,7 @@
     "date": "2025-09-28",
     "tags": ["docker", "devops", "containerization"],
     "pinned": false,
-    "readTime": "10 min read"
+    "readTime": "10 min read",
+    "coverImage": "/images/docker-intro.jpg"
   }
 ]

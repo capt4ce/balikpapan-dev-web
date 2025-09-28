@@ -1,4 +1,5 @@
-import { Code2, Github, Twitter, Mail } from "lucide-react";
+import { Github, Twitter, Mail } from "lucide-react";
+import bpnDevLogo from "@/assets/bpn-dev-logo.png";
 
 export function Footer() {
   return (
@@ -8,9 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-ocean">
-                <Code2 className="h-4 w-4 text-primary-foreground" />
-              </div>
+              <img src={bpnDevLogo} alt="Balikpapan.dev Logo" className="h-8 w-8" />
               <span className="text-lg font-bold bg-gradient-hero bg-clip-text text-transparent">
                 Balikpapan.dev
               </span>
@@ -44,7 +43,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-sm font-semibold">Connect</h3>
             <div className="flex space-x-4">
-              <a href="mailto:hello@balikpapan.dev" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:info@balikpapan.dev" className="text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">

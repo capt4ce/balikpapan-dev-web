@@ -16,6 +16,7 @@ const featuredPosts = [
     date: "2025-09-01",
     tags: ["community", "announcement"],
     pinned: true,
+    coverImage: "/images/kickoff.jpg",
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const featuredPosts = [
     date: "2025-09-15",
     tags: ["react", "tutorial", "beginner"],
     pinned: false,
+    coverImage: "/images/react-2025.jpg",
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const featuredPosts = [
     date: "2025-09-20",
     tags: ["nodejs", "api", "backend"],
     pinned: false,
+    coverImage: "/images/nodejs-api.jpg",
   },
 ];
 
@@ -127,7 +130,16 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredPosts.map((post) => (
-              <Card key={post.id} className="group hover:shadow-card transition-shadow duration-300">
+              <Card key={post.id} className="group hover:shadow-card transition-shadow duration-300 overflow-hidden">
+                {post.coverImage && (
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={post.coverImage} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
