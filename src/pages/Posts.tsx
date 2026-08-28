@@ -197,7 +197,7 @@ export default function Posts() {
       {/* Posts Grid — responsive: 1 col mobile, 2 col tablet, 3 col desktop */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="feed" aria-label="Articles list">
         {filteredPosts.map((post, index) => (
-          <Reveal key={post.id} delay={index * 60}>
+          <Reveal key={post.id} delay={index * 60} className="h-full">
             <Card className="group hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full flex flex-col">
               {/* Cover — top, full width, responsive */}
               <div className="aspect-video bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 flex items-center justify-center shrink-0" aria-hidden="true">

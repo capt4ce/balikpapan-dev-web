@@ -110,8 +110,8 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <Reveal key={index} delay={index * 100}>
-                <div className="flex flex-col items-center text-center p-6 rounded-xl bg-card border shadow-sm hover:shadow-elegant transition-shadow duration-300">
+              <Reveal key={index} delay={index * 100} className="h-full">
+                <div className="flex h-full flex-col items-center text-center p-6 rounded-xl bg-card border shadow-sm hover:shadow-elegant transition-shadow duration-300">
                   <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-ocean mb-4">
                     <stat.icon className="h-7 w-7 text-primary-foreground" />
                   </div>
@@ -138,7 +138,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {featuredPosts.map((post, index) => (
-              <Reveal key={post.id} delay={index * 100}>
+              <Reveal key={post.id} delay={index * 100} className="h-full">
                 <Card className="group hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
                   <div className="aspect-video bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 flex items-center justify-center">
                     <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-ocean opacity-80 group-hover:scale-110 transition-transform duration-300">
