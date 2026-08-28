@@ -21,7 +21,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold">Quick Links</h3>
+            <h3 className="text-sm font-semibold font-heading">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li><a href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</a></li>
               <li><a href="/posts" className="text-muted-foreground hover:text-primary transition-colors">Posts</a></li>
@@ -31,7 +31,7 @@ export function Footer() {
 
           {/* Community */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold">Community</h3>
+            <h3 className="text-sm font-semibold font-heading">Community</h3>
             <ul className="space-y-2 text-sm">
               <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Join Us</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Events</a></li>
@@ -41,7 +41,7 @@ export function Footer() {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold">Connect</h3>
+            <h3 className="text-sm font-semibold font-heading">Connect</h3>
             <div className="flex space-x-4">
               <a href="mailto:info@balikpapan.dev" className="text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="h-5 w-5" />
@@ -58,7 +58,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t">
           <p className="text-center text-sm text-muted-foreground">
-            © 2025 Balikpapan.dev. Built with ❤️ by the community.
+          © 2025 Balikpapan.dev. Built by the community.
           </p>
         </div>
       </div>

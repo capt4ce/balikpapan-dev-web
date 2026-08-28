@@ -22,7 +22,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <img src={bpnDevLogo} alt="Balikpapan.dev Logo" className="h-8 w-8 dark:invert" />
-          <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+          <span className="text-xl font-bold font-heading bg-gradient-hero bg-clip-text text-transparent">
             Balikpapan.dev
           </span>
         </Link>
@@ -33,10 +33,10 @@ export function Header() {
             <Link
               key={item.name}
               to={item.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`relative text-sm font-medium transition-colors hover:text-primary after:absolute after:bottom-[-20px] after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 ${
                 isActive(item.href)
-                  ? "text-primary"
-                  : "text-muted-foreground"
+                  ? "text-primary after:w-full"
+                  : "text-muted-foreground after:w-0 hover:after:w-full"
               }`}
             >
               {item.name}
@@ -61,7 +61,7 @@ export function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden border-t bg-background">
+        <div className="md:hidden border-t bg-background animate-in fade-in slide-in-from-top-4 duration-200">
           <nav className="container py-4 space-y-3">
             {navigation.map((item) => (
               <Link

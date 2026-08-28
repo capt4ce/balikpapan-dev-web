@@ -14,6 +14,10 @@ export default {
     },
     extend: {
       colors: {
+      fontFamily: {
+        heading: ['"Libre Bodoni"', 'Georgia', 'serif'],
+        body: ['"Public Sans"', 'system-ui', 'sans-serif'],
+      },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

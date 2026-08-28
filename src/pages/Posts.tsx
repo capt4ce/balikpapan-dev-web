@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, Calendar, User, Star, Clock } from "lucide-react";
+import { Search, Filter, Calendar, User, Star, Clock, BookOpen, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
+import { Reveal } from "@/components/Reveal";
 
-// Mock data
 const allPosts = [
   {
     id: 1,
@@ -73,10 +73,10 @@ export default function Posts() {
       const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            post.author.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      const matchesTags = selectedTags.length === 0 || 
+
+      const matchesTags = selectedTags.length === 0 ||
                          selectedTags.some(tag => post.tags.includes(tag));
-      
+
       return matchesSearch && matchesTags;
     })
     .sort((a, b) => {
@@ -100,142 +100,158 @@ export default function Posts() {
         title="Articles & Tutorials"
         description="Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan tentang programming, teknologi, dan pengembangan software."
       />
-      <div className="container py-8 min-h-screen">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">Articles & Tutorials</h1>
-        <p className="text-lg text-muted-foreground">
-          Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan
-        </p>
-      </div>
+      <div className="container py-12 min-h-screen">
+      <Reveal>
+        <div className="mb-12">
+          <h1 className="text-4xl font-bold mb-4 font-heading">Articles & Tutorials</h1>
+          <p className="text-lg text-muted-foreground">
+            Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan
+          </p>
+        </div>
+      </Reveal>
 
       {/* Search and Filters */}
-      <div className="space-y-6 mb-8">
-        {/* Search */}
-        <div className="relative">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Cari artikel, author, atau topik..."
-            className="pl-10"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-
-        {/* Tags Filter */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4" />
-            <span className="text-sm font-medium">Filter by tags:</span>
+      <Reveal delay={100}>
+        <div className="space-y-6 mb-8">
+          {/* Search */}
+          <div className="relative">
+            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Cari artikel, author, atau topik..."
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
-          <div className="flex flex-wrap gap-2">
-            {allTags.map((tag) => (
-              <Badge
-                key={tag}
-                variant={selectedTags.includes(tag) ? "default" : "outline"}
-                className="cursor-pointer transition-colors hover:bg-primary hover:text-primary-foreground"
-                onClick={() => toggleTag(tag)}
+
+          {/* Tags Filter */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Filter className="h-4 w-4" />
+              <span className="text-sm font-medium">Filter by tags:</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {allTags.map((tag) => (
+                <Badge
+                  key={tag}
+                  variant={selectedTags.includes(tag) ? "default" : "outline"}
+                  className="cursor-pointer transition-colors hover:bg-primary hover:text-primary-foreground"
+                  onClick={() => toggleTag(tag)}
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            {selectedTags.length > 0 && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSelectedTags([])}
+                className="text-muted-foreground"
               >
-                {tag}
-              </Badge>
-            ))}
+                <X className="h-3 w-3 mr-1" />
+                Clear filters
+              </Button>
+            )}
           </div>
-          {selectedTags.length > 0 && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSelectedTags([])}
-              className="text-muted-foreground"
-            >
-              Clear filters
-            </Button>
-          )}
-        </div>
 
-        {/* Sort */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">
-            {filteredPosts.length} artikel ditemukan
-          </span>
-          <div className="flex items-center gap-2">
-            <span className="text-sm">Sort by:</span>
-            <Button
-              variant={sortBy === "date" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSortBy("date")}
-            >
-              <Calendar className="h-4 w-4 mr-1" />
-              Date
-            </Button>
-            <Button
-              variant={sortBy === "title" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSortBy("title")}
-            >
-              Title
-            </Button>
+          {/* Sort */}
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">
+              {filteredPosts.length} artikel ditemukan
+            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm">Sort by:</span>
+              <Button
+                variant={sortBy === "date" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSortBy("date")}
+              >
+                <Calendar className="h-4 w-4 mr-1" />
+                Date
+              </Button>
+              <Button
+                variant={sortBy === "title" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSortBy("title")}
+              >
+                Title
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* Posts Grid */}
       <div className="grid gap-6">
-        {filteredPosts.map((post) => (
-          <Card key={post.id} className="group hover:shadow-card transition-all duration-300">
-            <CardHeader>
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    {post.pinned && (
-                      <Badge variant="secondary" className="text-xs">
-                        <Star className="w-3 h-3 mr-1" />
-                        Pinned
-                      </Badge>
-                    )}
-                    <div className="flex gap-2">
-                      {post.tags.map((tag) => (
-                        <Badge key={tag} variant="outline" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
+        {filteredPosts.map((post, index) => (
+          <Reveal key={post.id} delay={index * 60}>
+            <Card className="group hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div className="flex">
+                {/* Cover */}
+                <div className="hidden sm:flex w-32 shrink-0 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 items-center justify-center">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-ocean opacity-80 group-hover:scale-110 transition-transform duration-300">
+                    <BookOpen className="h-6 w-6 text-primary-foreground" />
+                  </div>
+                </div>
+
+                <CardHeader className="flex-1">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        {post.pinned && (
+                          <Badge variant="secondary" className="text-xs">
+                            <Star className="w-3 h-3 mr-1" />
+                            Pinned
+                          </Badge>
+                        )}
+                        <div className="flex gap-2">
+                          {post.tags.map((tag) => (
+                            <Badge key={tag} variant="outline" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors font-heading">
+                        <Link to={`/posts/${post.id}`}>
+                          {post.title}
+                        </Link>
+                      </CardTitle>
+
+                      <CardDescription className="text-base">
+                        {post.excerpt}
+                      </CardDescription>
                     </div>
                   </div>
-                  
-                  <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
-                    <Link to={`/posts/${post.id}`}>
-                      {post.title}
-                    </Link>
-                  </CardTitle>
-                  
-                  <CardDescription className="text-base">
-                    {post.excerpt}
-                  </CardDescription>
-                </div>
+
+                  <div className="flex items-center justify-between text-sm text-muted-foreground pt-4">
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        {post.author}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {post.date}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {post.readTime}
+                      </div>
+                    </div>
+
+                    <Button variant="ghost" size="sm" asChild>
+                      <Link to={`/posts/${post.id}`}>
+                        Read more →
+                      </Link>
+                    </Button>
+                  </div>
+                </CardHeader>
               </div>
-              
-              <div className="flex items-center justify-between text-sm text-muted-foreground pt-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1">
-                    <User className="h-4 w-4" />
-                    {post.author}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
-                    {post.date}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-4 w-4" />
-                    {post.readTime}
-                  </div>
-                </div>
-                
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to={`/posts/${post.id}`}>
-                    Read more →
-                  </Link>
-                </Button>
-              </div>
-            </CardHeader>
-          </Card>
+            </Card>
+          </Reveal>
         ))}
       </div>
 
