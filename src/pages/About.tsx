@@ -88,12 +88,12 @@ export default function About() {
         title="About Us"
         description="Learn about Balikpapan.dev community - our vision to transform Balikpapan into a thriving tech hub, our activities, and team members."
       />
-      <div className="container py-12 min-h-screen">
+      <div className="container py-8 min-h-screen">
       {/* Hero Section */}
       <Reveal>
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-6 font-heading">About Balikpapan.dev</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
+          <h1 className="text-4xl font-bold mb-6">About Balikpapan.dev</h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             We're building the Silicon Valley of Indonesia, right here in Balikpapan.
             Join us in fostering a thriving tech ecosystem in East Kalimantan.
           </p>
@@ -110,7 +110,7 @@ export default function About() {
                   <Target className="h-6 w-6 text-primary-foreground" />
                 </div>
               </div>
-              <CardTitle className="text-2xl font-heading">Our Vision & Mission</CardTitle>
+              <CardTitle className="text-2xl">Our Vision & Mission</CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -138,7 +138,7 @@ export default function About() {
       <section className="mb-16">
         <Reveal>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 font-heading">What We Do</h2>
+            <h2 className="text-3xl font-bold mb-4">What We Do</h2>
             <p className="text-lg text-muted-foreground">
               Our activities focus on learning, sharing, and growing together as a community
             </p>
@@ -153,7 +153,7 @@ export default function About() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-ocean mb-4 group-hover:scale-110 transition-transform duration-300">
                     <activity.icon className="h-6 w-6 text-primary-foreground" />
                   </div>
-                  <CardTitle className="text-lg font-heading">{activity.title}</CardTitle>
+                  <CardTitle className="text-lg">{activity.title}</CardTitle>
                   <CardDescription>{activity.description}</CardDescription>
                 </CardHeader>
               </Card>
@@ -166,7 +166,7 @@ export default function About() {
       <section className="mb-16">
         <Reveal>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 font-heading">Meet Our Team</h2>
+            <h2 className="text-3xl font-bold mb-4">Meet Our Team</h2>
             <p className="text-lg text-muted-foreground">
               The passionate individuals driving Balikpapan's tech community forward
             </p>
@@ -179,11 +179,11 @@ export default function About() {
               <Card className="text-center group hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 h-full">
                 <CardHeader>
                   <Avatar className="h-20 w-20 mx-auto mb-4">
-                    <AvatarFallback className="bg-gradient-ocean text-primary-foreground text-xl font-bold font-heading">
+                    <AvatarFallback className="bg-gradient-ocean text-primary-foreground text-xl font-bold">
                       {getInitials(member.name)}
                     </AvatarFallback>
                   </Avatar>
-                  <CardTitle className="text-lg font-heading">{member.name}</CardTitle>
+                  <CardTitle className="text-lg">{member.name}</CardTitle>
                   <CardDescription className="text-primary font-medium">
                     {member.role}
                   </CardDescription>
@@ -212,7 +212,7 @@ export default function About() {
           <Card className="bg-gradient-hero text-white overflow-hidden relative">
             <div className="absolute inset-0 grid-pattern opacity-10" />
             <CardHeader className="relative">
-              <CardTitle className="text-3xl mb-4 font-heading">Join Our Community</CardTitle>
+              <CardTitle className="text-3xl mb-4">Join Our Community</CardTitle>
               <CardDescription className="text-white/80 text-lg">
                 Ready to be part of Balikpapan's growing tech ecosystem? Get in touch with us!
               </CardDescription>

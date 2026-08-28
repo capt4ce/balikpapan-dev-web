@@ -57,7 +57,7 @@ export default function Home() {
       />
       <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 lg:py-36">
+      <section className="relative overflow-hidden py-20 lg:py-32">
         <div className="absolute inset-0 mesh-gradient" />
         <div className="absolute inset-0 grid-pattern opacity-40" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
@@ -72,7 +72,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={100}>
-              <h1 className="mb-6 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl font-heading text-balance">
+              <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
                 Wujudkan{" "}
                 <span className="bg-gradient-hero bg-clip-text text-transparent">
                   Silicon Valley
@@ -82,7 +82,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="mb-10 text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
+              <p className="mb-10 text-lg text-muted-foreground max-w-2xl mx-auto">
                 Bergabunglah dengan komunitas developer Balikpapan untuk berkembang bersama,
                 berbagi pengetahuan, dan membangun ekosistem teknologi yang kuat di Kalimantan Timur.
               </p>
@@ -115,7 +115,7 @@ export default function Home() {
                   <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-ocean mb-4">
                     <stat.icon className="h-7 w-7 text-primary-foreground" />
                   </div>
-                  <div className="text-3xl font-bold font-heading text-primary mb-1">{stat.value}</div>
+                  <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               </Reveal>
@@ -125,18 +125,18 @@ export default function Home() {
       </section>
 
       {/* Featured Posts */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container">
           <Reveal>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 font-heading">Artikel Terbaru</h2>
+              <h2 className="text-3xl font-bold mb-4">Artikel Terbaru</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Bacaan terkini dari komunitas developer Balikpapan
               </p>
             </div>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {featuredPosts.map((post, index) => (
               <Reveal key={post.id} delay={index * 100}>
                 <Card className="group hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
@@ -196,7 +196,7 @@ export default function Home() {
       <section className="py-20 bg-gradient-card">
         <div className="container text-center">
           <Reveal>
-            <h2 className="text-3xl font-bold mb-4 font-heading">Ready to Join Us?</h2>
+            <h2 className="text-3xl font-bold mb-4">Ready to Join Us?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Mari bersama-sama membangun ekosistem teknologi yang lebih baik di Balikpapan.
               Bergabunglah dengan komunitas kami sekarang!

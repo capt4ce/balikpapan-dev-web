@@ -243,7 +243,7 @@ export default function PostDetail() {
     return (
       <div className="container py-8 min-h-screen">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4 font-heading">Post Not Found</h1>
+          <h1 className="text-2xl font-bold mb-4">Post Not Found</h1>
           <p className="text-muted-foreground mb-6">The article you're looking for doesn't exist.</p>
           <Button asChild>
             <Link to="/posts">
@@ -308,7 +308,7 @@ export default function PostDetail() {
                 </div>
 
                 {/* Title */}
-                <h1 className="text-4xl font-bold mb-6 leading-tight font-heading text-balance">
+                <h1 className="text-4xl font-bold mb-6 leading-tight">
                   {post.title}
                 </h1>
 
@@ -354,13 +354,13 @@ export default function PostDetail() {
                       .split('\n')
                       .map(line => {
                         if (line.startsWith('# ')) {
-                          return `<h1 class="text-3xl font-bold mb-4 mt-8 text-primary font-heading">${line.slice(2)}</h1>`;
+                          return `<h1 class="text-3xl font-bold mb-4 mt-8 text-primary">${line.slice(2)}</h1>`;
                         }
                         if (line.startsWith('## ')) {
-                          return `<h2 class="text-2xl font-semibold mt-8 mb-4 text-primary font-heading">${line.slice(3)}</h2>`;
+                          return `<h2 class="text-2xl font-semibold mt-8 mb-4 text-primary">${line.slice(3)}</h2>`;
                         }
                         if (line.startsWith('### ')) {
-                          return `<h3 class="text-xl font-semibold mt-6 mb-3 font-heading">${line.slice(4)}</h3>`;
+                          return `<h3 class="text-xl font-semibold mt-6 mb-3">${line.slice(4)}</h3>`;
                         }
                         if (line.startsWith('> ')) {
                           return `<blockquote class="border-l-4 border-primary pl-4 italic text-lg my-6">${line.slice(2)}</blockquote>`;

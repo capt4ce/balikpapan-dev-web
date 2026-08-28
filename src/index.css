@@ -55,10 +55,6 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
-    /* Typography */
-    --font-heading: "Libre Bodoni", Georgia, serif;
-    --font-body: "Public Sans", system-ui, sans-serif;
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -129,25 +125,12 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
   }
 }
 
 @layer utilities {
-  .font-heading {
-    font-family: var(--font-heading);
-  }
-
-  .text-balance {
-    text-wrap: balance;
-  }
-
   .mesh-gradient {
     background-image:
       radial-gradient(at 20% 30%, hsl(var(--primary) / 0.12) 0px, transparent 50%),

@@ -105,10 +105,10 @@ export default function Posts() {
         title="Articles & Tutorials"
         description="Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan tentang programming, teknologi, dan pengembangan software di Kalimantan Timur."
       />
-      <div className="container py-12 min-h-screen">
+      <div className="container py-8 min-h-screen">
       <Reveal>
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4 font-heading">Articles & Tutorials</h1>
+          <h1 className="text-4xl font-bold mb-4">Articles & Tutorials</h1>
           <p className="text-lg text-muted-foreground">
             Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan
           </p>
@@ -166,7 +166,7 @@ export default function Posts() {
           </div>
 
           {/* Sort */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <span className="text-sm text-muted-foreground">
               {filteredPosts.length} artikel ditemukan
             </span>
@@ -194,74 +194,70 @@ export default function Posts() {
         </div>
       </Reveal>
 
-      {/* Posts Grid */}
-      <div className="grid gap-6" role="feed" aria-label="Articles list">
+      {/* Posts Grid — responsive: 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="feed" aria-label="Articles list">
         {filteredPosts.map((post, index) => (
           <Reveal key={post.id} delay={index * 60}>
-            <Card className="group hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-              <div className="flex">
-                {/* Cover */}
-                <div className="hidden sm:flex w-32 shrink-0 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 items-center justify-center" aria-hidden="true">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-ocean opacity-80 group-hover:scale-110 transition-transform duration-300">
-                    <BookOpen className="h-6 w-6 text-primary-foreground" />
+            <Card className="group hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full flex flex-col">
+              {/* Cover — top, full width, responsive */}
+              <div className="aspect-video bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 flex items-center justify-center shrink-0" aria-hidden="true">
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-ocean opacity-80 group-hover:scale-110 transition-transform duration-300">
+                  <BookOpen className="h-7 w-7 text-primary-foreground" />
+                </div>
+              </div>
+
+              <CardHeader className="flex-1">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {post.pinned && (
+                      <Badge variant="secondary" className="text-xs">
+                        <Star className="w-3 h-3 mr-1" aria-hidden="true" />
+                        Pinned
+                      </Badge>
+                    )}
+                    {post.tags.slice(0, 2).map((tag) => (
+                      <Badge key={tag} variant="outline" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
                   </div>
                 </div>
 
-                <CardHeader className="flex-1">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        {post.pinned && (
-                          <Badge variant="secondary" className="text-xs">
-                            <Star className="w-3 h-3 mr-1" aria-hidden="true" />
-                            Pinned
-                          </Badge>
-                        )}
-                        <div className="flex gap-2">
-                          {post.tags.map((tag) => (
-                            <Badge key={tag} variant="outline" className="text-xs">
-                              {tag}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
+                <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
+                  <Link to={`/posts/${post.id}`} aria-label={`Read article: ${post.title}`}>
+                    {post.title}
+                  </Link>
+                </CardTitle>
 
-                      <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors font-heading">
-                        <Link to={`/posts/${post.id}`} aria-label={`Read article: ${post.title}`}>
-                          {post.title}
-                        </Link>
-                      </CardTitle>
+                <CardDescription className="text-base">
+                  {post.excerpt}
+                </CardDescription>
+              </CardHeader>
 
-                      <CardDescription className="text-base">
-                        {post.excerpt}
-                      </CardDescription>
+              <CardContent>
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" aria-hidden="true" />
+                      <span>{post.author}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" aria-hidden="true" />
+                      <time dateTime={post.date}>{post.date}</time>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" aria-hidden="true" />
+                      <span>{post.readTime}</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-sm text-muted-foreground pt-4">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-1">
-                        <User className="h-4 w-4" aria-hidden="true" />
-                        <span>{post.author}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" aria-hidden="true" />
-                        <time dateTime={post.date}>{post.date}</time>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" aria-hidden="true" />
-                        <span>{post.readTime}</span>
-                      </div>
-                    </div>
-
-                    <Button variant="ghost" size="sm" asChild>
-                      <Link to={`/posts/${post.id}`} aria-label={`Read more about ${post.title}`}>
-                        Read more →
-                      </Link>
-                    </Button>
-                  </div>
-                </CardHeader>
-              </div>
+                  <Button variant="ghost" size="sm" asChild className="w-fit">
+                    <Link to={`/posts/${post.id}`} aria-label={`Read more about ${post.title}`}>
+                      Read more →
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
             </Card>
           </Reveal>
         ))}

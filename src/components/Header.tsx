@@ -22,7 +22,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <img src={bpnDevLogo} alt="Balikpapan.dev Logo" className="h-8 w-8 dark:invert" />
-          <span className="text-xl font-bold font-heading bg-gradient-hero bg-clip-text text-transparent">
+          <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
             Balikpapan.dev
           </span>
         </Link>
