@@ -43,12 +43,17 @@ const stats = [
   { icon: Github, label: "Open Source Projects", value: "8+" },
 ];
 
+const publishedDate = "2025-09-01T00:00:00+07:00";
+const modifiedDate = "2025-09-28T10:30:00+07:00";
+
 export default function Home() {
   return (
     <>
       <SEO
         title="Balikpapan.dev - Developer Community"
         description="Bergabunglah dengan komunitas developer Balikpapan untuk berkembang bersama, berbagi pengetahuan, dan membangun ekosistem teknologi yang kuat di Kalimantan Timur."
+        type="website"
+        articleMeta={{ publishedTime: publishedDate, modifiedTime: modifiedDate }}
       />
       <div className="min-h-screen">
       {/* Hero Section */}
@@ -106,7 +111,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <Reveal key={index} delay={index * 100}>
-                <div className="flex flex-col items-center text-center p-6 rounded-xl bg-card border shadow-sm hover:shadow-card transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6 rounded-xl bg-card border shadow-sm hover:shadow-elegant transition-shadow duration-300">
                   <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-ocean mb-4">
                     <stat.icon className="h-7 w-7 text-primary-foreground" />
                   </div>
@@ -150,7 +155,7 @@ export default function Home() {
                           </Badge>
                         )}
                       </div>
-                      <span className="text-sm text-muted-foreground">{post.date}</span>
+                      <time dateTime={post.date} className="text-sm text-muted-foreground">{post.date}</time>
                     </div>
                     <CardTitle className="group-hover:text-primary transition-colors">
                       <Link to={`/posts/${post.id}`}>

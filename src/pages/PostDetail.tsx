@@ -7,9 +7,18 @@ import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { Reveal } from "@/components/Reveal";
 
+const postSlugMap: Record<number, string> = {
+  1: "kickoff-balikpapan-dev",
+  2: "getting-started-react-2025",
+  3: "building-scalable-apis-nodejs",
+  4: "typescript-tips-javascript-developers",
+  5: "introduction-docker-web-developers",
+};
+
 const mockPosts = {
   "1": {
     id: 1,
+    slug: "kickoff-balikpapan-dev",
     title: "Kickoff: Balikpapan.dev",
     content: `
 # Selamat datang di **Balikpapan.dev**!
@@ -74,12 +83,161 @@ Kalau kamu developer, designer, product manager, atau siapapun yang passionate d
     readTime: "5 min read",
     tags: ["community", "announcement", "kickoff"],
     pinned: true,
-  }
+    publishedAt: "2025-09-01T08:00:00+07:00",
+    modifiedAt: "2025-09-28T10:30:00+07:00",
+  },
+  "2": {
+    id: 2,
+    slug: "getting-started-react-2025",
+    title: "Getting Started with React in 2025",
+    content: `
+# Getting Started with React in 2025
+
+React terus berevolusi setiap tahunnya. Di 2025, ada beberapa perubahan signifikan yang perlu kamu ketahui sebagai developer.
+
+## Apa Baru di React 2025?
+
+### Server Components
+React Server Components kini menjadi standar untuk aplikasi modern. Komponen ini berjalan di server dan mengurangi bundle size secara signifikan.
+
+### React Compiler
+Compiler baru ini mengoptimalkan re-render secara otomatis, mengurangi kebutuhan akan \`memo\` dan \`useCallback\` secara manual.
+
+### Enhanced Suspense
+Suspense kini lebih powerful dengan granular loading states yang lebih halus.
+
+## Setup Project
+
+Untuk memulai project React baru di 2025, gunakan Vite:
+
+\`\`\`bash
+npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install
+\`\`\`
+
+## Best Practices
+
+1. **Gunakan TypeScript** — type safety adalah wajib
+2. **Server Components** — untuk data fetching dan layout
+3. **Client Components** — hanya untuk interaktivitas
+4. **Suspense boundaries** — untuk graceful loading states
+
+## Kesimpulan
+
+React 2025 membawa banyak improvement yang membuat development lebih produktif. Fokus pada Server Components dan compiler optimizations untuk hasil terbaik.
+    `,
+    author: "Sarah Aisyah",
+    date: "2025-09-15",
+    readTime: "8 min read",
+    tags: ["react", "tutorial", "beginner"],
+    pinned: false,
+    publishedAt: "2025-09-15T09:00:00+07:00",
+    modifiedAt: "2025-09-20T14:00:00+07:00",
+  },
+  "3": {
+    id: 3,
+    slug: "building-scalable-apis-nodejs",
+    title: "Building Scalable APIs with Node.js",
+    content: `
+# Building Scalable APIs with Node.js
+
+Membangun REST API yang scalable dan maintainable adalah skill penting untuk backend developer.
+
+## Arsitektur yang Direkomendasikan
+
+### Layered Architecture
+Pisahkan business logic dari HTTP handling untuk kemudahan testing dan maintenance.
+
+### Database Patterns
+Gunakan repository pattern dan dependency injection untuk flexibility.
+
+## Tools & Libraries
+
+- **Express/Fastify** — untuk HTTP layer
+- **Prisma/TypeORM** — untuk database abstraction
+- **Zod** — untuk input validation
+- **Winston/Pino** — untuk logging
+
+## Scaling Strategies
+
+1. **Horizontal scaling** — tambah instance, bukan upgrade server
+2. **Connection pooling** — kelola koneksi database efisien
+3. **Caching** — Redis untuk frequently accessed data
+4. **Rate limiting** — proteksi dari abuse
+    `,
+    author: "Rizki Pratama",
+    date: "2025-09-20",
+    readTime: "12 min read",
+    tags: ["nodejs", "api", "backend"],
+    pinned: false,
+    publishedAt: "2025-09-20T10:00:00+07:00",
+    modifiedAt: "2025-09-20T10:00:00+07:00",
+  },
+  "4": {
+    id: 4,
+    slug: "typescript-tips-javascript-developers",
+    title: "TypeScript Tips untuk Developer JavaScript",
+    content: `
+# TypeScript Tips untuk Developer JavaScript
+
+Beralih dari JavaScript ke TypeScript bisa intimidatif. Berikut tips praktis untuk transisi yang mulus.
+
+## Mulai Bertahap
+
+1. Rename \`.js\` ke \`.ts\`
+2. Fix type errors satu per satu
+3. Gunakan \`// @ts-ignore\` hanya untuk library tanpa types
+4. Aktifkan \`strict: true\` di tsconfig setelah stabil
+
+## Type Patterns yang Sering Digunakan
+
+- \`Record<K, V>\` untuk object mappings
+- \`Omit<T, K>\` untuk mengurangi properties
+- \`Partial<T>\` untuk optional properties
+- \`Pick<T, K>\` untuk memilih properties spesifik
+    `,
+    author: "Ahmad Fauzi",
+    date: "2025-09-25",
+    readTime: "6 min read",
+    tags: ["typescript", "javascript", "tips"],
+    pinned: false,
+    publishedAt: "2025-09-25T11:00:00+07:00",
+    modifiedAt: "2025-09-25T11:00:00+07:00",
+  },
+  "5": {
+    id: 5,
+    slug: "introduction-docker-web-developers",
+    title: "Introduction to Docker untuk Web Developers",
+    content: `
+# Introduction to Docker untuk Web Developers
+
+Containerization telah mengubah cara developer deploying aplikasi. Docker membuat environment consistency terjamin.
+
+##基本概念
+
+Container vs VM: Container share host OS kernel, lebih lightweight.
+
+## Dockerfile Best Practices
+
+- Gunakan multi-stage builds
+- Minimize layer count
+- Use .dockerignore
+- Pin base image versions
+    `,
+    author: "Indira Sari",
+    date: "2025-09-28",
+    readTime: "10 min read",
+    tags: ["docker", "devops", "containerization"],
+    pinned: false,
+    publishedAt: "2025-09-28T08:00:00+07:00",
+    modifiedAt: "2025-09-28T08:00:00+07:00",
+  },
 };
 
 export default function PostDetail() {
-  const { id } = useParams();
-  const post = mockPosts[id as keyof typeof mockPosts];
+  const { id } = useParams<{ id: string }>();
+  const post = mockPosts[id ?? ""];
 
   if (!post) {
     return (
@@ -89,7 +247,7 @@ export default function PostDetail() {
           <p className="text-muted-foreground mb-6">The article you're looking for doesn't exist.</p>
           <Button asChild>
             <Link to="/posts">
-              <ArrowLeft className="mr-2 h-4 w-4" />
+              <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
               Back to Posts
             </Link>
           </Button>
@@ -100,10 +258,20 @@ export default function PostDetail() {
 
   return (
     <>
-      <SEO title={post.title} description={`Article by ${post.author} on Balikpapan.dev`} type="article" />
+      <SEO
+        title={post.title}
+        description={post.content.slice(0, 160).replace(/[#*`>\-]/g, "").trim()}
+        type="article"
+        articleMeta={{
+          publishedTime: post.publishedAt,
+          modifiedTime: post.modifiedAt,
+          author: post.author,
+          tagName: post.tags,
+        }}
+      />
       <div className="min-h-screen">
         {/* Cover */}
-        <div className="relative h-48 sm:h-64 bg-gradient-to-br from-primary/15 via-primary/5 to-accent/10 overflow-hidden">
+        <div className="relative h-48 sm:h-64 bg-gradient-to-br from-primary/15 via-primary/5 to-accent/10 overflow-hidden" aria-hidden="true">
           <div className="absolute inset-0 grid-pattern opacity-30" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-ocean shadow-glow">
@@ -116,8 +284,8 @@ export default function PostDetail() {
           {/* Navigation */}
           <div className="mb-8">
             <Button variant="ghost" asChild>
-              <Link to="/posts">
-                <ArrowLeft className="mr-2 h-4 w-4" />
+              <Link to="/posts" aria-label="Back to articles listing">
+                <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
                 Back to Posts
               </Link>
             </Button>
@@ -128,9 +296,11 @@ export default function PostDetail() {
             <Reveal>
               <header className="mb-8">
                 {/* Tags */}
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 mb-4" role="group" aria-label="Article tags">
                   {post.pinned && (
-                    <Badge variant="secondary">Pinned</Badge>
+                    <Badge variant="secondary">
+                      <span className="sr-only">Pinned</span> Pinned
+                    </Badge>
                   )}
                   {post.tags.map((tag) => (
                     <Badge key={tag} variant="outline">{tag}</Badge>
@@ -145,15 +315,15 @@ export default function PostDetail() {
                 {/* Metadata */}
                 <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-6">
                   <div className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
+                    <User className="h-4 w-4" aria-hidden="true" />
                     <span>{post.author}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    <span>{post.date}</span>
+                    <Calendar className="h-4 w-4" aria-hidden="true" />
+                    <time dateTime={post.date}>{post.date}</time>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
+                    <Clock className="h-4 w-4" aria-hidden="true" />
                     <span>{post.readTime}</span>
                   </div>
                 </div>
@@ -161,11 +331,11 @@ export default function PostDetail() {
                 {/* Actions */}
                 <div className="flex items-center gap-4 mb-8">
                   <Button variant="outline" size="sm">
-                    <Share2 className="mr-2 h-4 w-4" />
+                    <Share2 className="mr-2 h-4 w-4" aria-hidden="true" />
                     Share
                   </Button>
                   <Button variant="outline" size="sm">
-                    <Bookmark className="mr-2 h-4 w-4" />
+                    <Bookmark className="mr-2 h-4 w-4" aria-hidden="true" />
                     Bookmark
                   </Button>
                 </div>
@@ -231,7 +401,7 @@ export default function PostDetail() {
                 </div>
 
                 <Button variant="ocean" asChild>
-                  <Link to="/posts">
+                  <Link to="/posts" aria-label="Browse more articles">
                     More Articles
                   </Link>
                 </Button>
