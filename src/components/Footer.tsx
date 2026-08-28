@@ -58,7 +58,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t">
           <p className="text-center text-sm text-muted-foreground">
-            © 2025 Balikpapan.dev. Built with ❤️ by the community.
+            © 2025 Balikpapan.dev. Built by the community.
           </p>
         </div>
       </div>
