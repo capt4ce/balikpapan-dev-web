@@ -12,6 +12,7 @@ export function Header() {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Posts", href: "/posts" },
+    { name: "Leaderboard", href: "/leaderboard" },
     { name: "About", href: "/about" },
   ];
 
@@ -53,6 +54,9 @@ export function Header() {
             size="icon"
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </Button>
@@ -62,7 +66,7 @@ export function Header() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden border-t bg-background">
-          <nav className="container py-4 space-y-3">
+          <nav id="mobile-navigation" className="container py-4 space-y-3" aria-label="Mobile navigation">
             {navigation.map((item) => (
               <Link
                 key={item.name}
