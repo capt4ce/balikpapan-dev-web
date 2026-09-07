@@ -1,17 +1,13 @@
-import { useState } from "react";
 import { ArrowDown, ArrowUp, Minus } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import leaderboardData from "@/data/leaderboard.json";
 import { getPodiumMembers, rankMembers } from "@/lib/leaderboard.js";
 
-const periodKeys = ["weekly", "monthly", "yearly", "alltime"] as const;
-type PeriodKey = (typeof periodKeys)[number];
 
-type Member = (typeof leaderboardData.periods.weekly.members)[number];
+type Member = (typeof leaderboardData.members)[number];
 
 const badgeIcons: Record<string, string> = {
   "Bug Hunter": "◈",
@@ -97,15 +93,12 @@ function Movement({ change }: { change: number }) {
   );
 }
 
-function LeaderboardPanel({ periodKey }: { periodKey: PeriodKey }) {
-  const period = leaderboardData.periods[periodKey];
-  const rankedMembers = rankMembers(period.members) as Member[];
-  const podiumMembers = getPodiumMembers(period.members) as Member[];
+function LeaderboardPanel() {
+  const rankedMembers = rankMembers(leaderboardData.members) as Member[];
+  const podiumMembers = getPodiumMembers(leaderboardData.members) as Member[];
 
   return (
     <>
-      <p className="mt-5 text-sm font-medium text-muted-foreground">{period.range}</p>
-
       <section className="mt-12 grid grid-cols-1 items-end gap-4 md:grid-cols-3" aria-label="Top three members">
         {podiumMembers.map((member) => {
           const rank = rankedMembers.indexOf(member) + 1;
@@ -145,7 +138,7 @@ function LeaderboardPanel({ periodKey }: { periodKey: PeriodKey }) {
       </section>
 
       <section className="mt-5 overflow-hidden rounded-2xl border bg-card shadow-sm" aria-label="Remaining leaderboard">
-        <div role="table" aria-label={`${period.label} community rankings`}>
+        <div role="table" aria-label="Community rankings">
           <div className="sr-only" role="rowgroup">
             <div role="row">
               <span role="columnheader">Rank</span>
@@ -192,13 +185,11 @@ function LeaderboardPanel({ periodKey }: { periodKey: PeriodKey }) {
 }
 
 export default function Leaderboard() {
-  const [period, setPeriod] = useState<PeriodKey>("weekly");
-
   return (
     <>
       <SEO
         title="Community Leaderboard"
-        description="Celebrate the top contributors moving Balikpapan's developer community forward across weekly, monthly, yearly, and all-time rankings."
+        description="Celebrate the top contributors moving Balikpapan's developer community forward on the community leaderboard."
         url="https://balikpapan.dev/projects/balikpapan-dev/leaderboard"
       />
       <div className="container min-h-screen py-12 md:py-16">
@@ -210,22 +201,11 @@ export default function Leaderboard() {
           </p>
         </header>
 
-        <Tabs value={period} onValueChange={(value) => setPeriod(value as PeriodKey)} className="mt-8">
-          <TabsList className="grid h-auto w-full grid-cols-4 rounded-xl p-1 sm:inline-grid sm:w-auto" aria-label="Leaderboard period">
-            {periodKeys.map((key) => (
-              <TabsTrigger key={key} value={key} className="rounded-lg px-2 py-2.5 sm:px-5">
-                {leaderboardData.periods[key].label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          {periodKeys.map((key) => (
-            <TabsContent key={key} value={key} className="mt-0">
-              <LeaderboardPanel periodKey={key} />
-            </TabsContent>
-          ))}
-        </Tabs>
+        <div className="mt-8">
+          <LeaderboardPanel />
+        </div>
 
-        <p className="mt-9 text-center text-xs text-muted-foreground">Community data · Updated 7 September 2026</p>
+        <p className="mt-9 text-center text-xs text-muted-foreground">Community data · Updated {leaderboardData.updated}</p>
       </div>
     </>
   );

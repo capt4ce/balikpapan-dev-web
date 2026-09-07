@@ -1,68 +1,130 @@
 {
-  "periods": {
-    "weekly": {
-      "label": "Weekly",
-      "range": "31 Aug – 6 Sep 2026",
-      "members": [
-        {"name":"Dinda Prameswari","handle":"@dindacodes","points":1280,"change":2,"streak":7,"avatar":"DP","badges":["Bug Hunter","Helpful Hero","7 Day Streak"]},
-        {"name":"Rizky Maulana","handle":"@rizkym","points":1140,"change":-1,"streak":5,"avatar":"RM","badges":["Open Source","Mentor"]},
-        {"name":"Nadia Putri","handle":"@nadiap","points":980,"change":1,"streak":4,"avatar":"NP","badges":["Event Champion","Helpful Hero"]},
-        {"name":"Fajar Ramadhan","handle":"@fajarr","points":870,"change":0,"streak":3,"avatar":"FR","badges":["Bug Hunter"]},
-        {"name":"Aulia Rahman","handle":"@auliar","points":790,"change":3,"streak":6,"avatar":"AR","badges":["Rising Star","7 Day Streak"]},
-        {"name":"Siti Amelia","handle":"@sitiamelia","points":710,"change":-2,"streak":2,"avatar":"SA","badges":["Community Builder"]},
-        {"name":"Bima Kurniawan","handle":"@bimak","points":640,"change":1,"streak":4,"avatar":"BK","badges":["Open Source"]},
-        {"name":"Putri Lestari","handle":"@putril","points":590,"change":0,"streak":2,"avatar":"PL","badges":["First Contribution"]}
+  "members": [
+    {
+      "name": "Siti Amelia",
+      "handle": "@sitiamelia",
+      "points": 68420,
+      "change": 0,
+      "streak": 42,
+      "avatar": "SA",
+      "badges": [
+        "Community Legend",
+        "Mentor",
+        "Top 3"
       ]
     },
-    "monthly": {
-      "label": "Monthly",
-      "range": "September 2026",
-      "members": [
-        {"name":"Rizky Maulana","handle":"@rizkym","points":4620,"change":1,"streak":12,"avatar":"RM","badges":["Open Source","Mentor","Top 3"]},
-        {"name":"Dinda Prameswari","handle":"@dindacodes","points":4380,"change":0,"streak":10,"avatar":"DP","badges":["Bug Hunter","Helpful Hero"]},
-        {"name":"Aulia Rahman","handle":"@auliar","points":3910,"change":4,"streak":9,"avatar":"AR","badges":["Rising Star","Community Builder"]},
-        {"name":"Nadia Putri","handle":"@nadiap","points":3540,"change":-1,"streak":7,"avatar":"NP","badges":["Event Champion"]},
-        {"name":"Siti Amelia","handle":"@sitiamelia","points":3180,"change":2,"streak":6,"avatar":"SA","badges":["Community Builder"]},
-        {"name":"Fajar Ramadhan","handle":"@fajarr","points":2860,"change":-2,"streak":4,"avatar":"FR","badges":["Bug Hunter"]},
-        {"name":"Putri Lestari","handle":"@putril","points":2530,"change":3,"streak":5,"avatar":"PL","badges":["Helpful Hero"]},
-        {"name":"Bima Kurniawan","handle":"@bimak","points":2210,"change":-1,"streak":3,"avatar":"BK","badges":["Open Source"]}
+    {
+      "name": "Nadia Putri",
+      "handle": "@nadiap",
+      "points": 63280,
+      "change": 1,
+      "streak": 31,
+      "avatar": "NP",
+      "badges": [
+        "Event Champion",
+        "Community Builder"
       ]
     },
-    "yearly": {
-      "label": "Yearly",
-      "range": "2026",
-      "members": [
-        {"name":"Nadia Putri","handle":"@nadiap","points":28450,"change":2,"streak":31,"avatar":"NP","badges":["Event Champion","Mentor","Top 3"]},
-        {"name":"Rizky Maulana","handle":"@rizkym","points":27120,"change":-1,"streak":24,"avatar":"RM","badges":["Open Source","Community Builder"]},
-        {"name":"Siti Amelia","handle":"@sitiamelia","points":24880,"change":3,"streak":18,"avatar":"SA","badges":["Community Builder","Helpful Hero"]},
-        {"name":"Dinda Prameswari","handle":"@dindacodes","points":23640,"change":0,"streak":16,"avatar":"DP","badges":["Bug Hunter","Mentor"]},
-        {"name":"Aulia Rahman","handle":"@auliar","points":21100,"change":1,"streak":14,"avatar":"AR","badges":["Rising Star"]},
-        {"name":"Fajar Ramadhan","handle":"@fajarr","points":19820,"change":-2,"streak":11,"avatar":"FR","badges":["Bug Hunter"]},
-        {"name":"Bima Kurniawan","handle":"@bimak","points":17690,"change":1,"streak":8,"avatar":"BK","badges":["Open Source"]},
-        {"name":"Putri Lestari","handle":"@putril","points":16440,"change":0,"streak":7,"avatar":"PL","badges":["Helpful Hero"]}
+    {
+      "name": "Rizky Maulana",
+      "handle": "@rizkym",
+      "points": 59140,
+      "change": -1,
+      "streak": 24,
+      "avatar": "RM",
+      "badges": [
+        "Open Source",
+        "Mentor"
       ]
     },
-    "alltime": {
-      "label": "All time",
-      "range": "Since 2021",
-      "members": [
-        {"name":"Siti Amelia","handle":"@sitiamelia","points":68420,"change":0,"streak":42,"avatar":"SA","badges":["Community Legend","Mentor","Top 3"]},
-        {"name":"Nadia Putri","handle":"@nadiap","points":63280,"change":1,"streak":31,"avatar":"NP","badges":["Event Champion","Community Builder"]},
-        {"name":"Rizky Maulana","handle":"@rizkym","points":59140,"change":-1,"streak":24,"avatar":"RM","badges":["Open Source","Mentor"]},
-        {"name":"Dinda Prameswari","handle":"@dindacodes","points":52870,"change":2,"streak":20,"avatar":"DP","badges":["Bug Hunter","Helpful Hero"]},
-        {"name":"Fajar Ramadhan","handle":"@fajarr","points":47620,"change":-1,"streak":16,"avatar":"FR","badges":["Bug Hunter"]},
-        {"name":"Aulia Rahman","handle":"@auliar","points":42910,"change":1,"streak":15,"avatar":"AR","badges":["Rising Star"]},
-        {"name":"Putri Lestari","handle":"@putril","points":38260,"change":0,"streak":11,"avatar":"PL","badges":["Helpful Hero"]},
-        {"name":"Bima Kurniawan","handle":"@bimak","points":34980,"change":0,"streak":9,"avatar":"BK","badges":["Open Source"]}
+    {
+      "name": "Dinda Prameswari",
+      "handle": "@dindacodes",
+      "points": 52870,
+      "change": 2,
+      "streak": 20,
+      "avatar": "DP",
+      "badges": [
+        "Bug Hunter",
+        "Helpful Hero"
+      ]
+    },
+    {
+      "name": "Fajar Ramadhan",
+      "handle": "@fajarr",
+      "points": 47620,
+      "change": -1,
+      "streak": 16,
+      "avatar": "FR",
+      "badges": [
+        "Bug Hunter"
+      ]
+    },
+    {
+      "name": "Aulia Rahman",
+      "handle": "@auliar",
+      "points": 42910,
+      "change": 1,
+      "streak": 15,
+      "avatar": "AR",
+      "badges": [
+        "Rising Star"
+      ]
+    },
+    {
+      "name": "Putri Lestari",
+      "handle": "@putril",
+      "points": 38260,
+      "change": 0,
+      "streak": 11,
+      "avatar": "PL",
+      "badges": [
+        "Helpful Hero"
+      ]
+    },
+    {
+      "name": "Bima Kurniawan",
+      "handle": "@bimak",
+      "points": 34980,
+      "change": 0,
+      "streak": 9,
+      "avatar": "BK",
+      "badges": [
+        "Open Source"
       ]
     }
-  },
+  ],
   "badgeCatalog": [
-    {"name":"Bug Hunter","icon":"◈","description":"Resolved 10 community-reported issues"},
-    {"name":"Helpful Hero","icon":"♥","description":"Received 25 helpful reactions"},
-    {"name":"Open Source","icon":"⌘","description":"Merged 5 open-source contributions"},
-    {"name":"Event Champion","icon":"★","description":"Attended 8 community events"},
-    {"name":"Mentor","icon":"✦","description":"Completed 10 mentoring sessions"},
-    {"name":"Community Builder","icon":"⬡","description":"Organized a community initiative"}
-  ]
+    {
+      "name": "Bug Hunter",
+      "icon": "◈",
+      "description": "Resolved 10 community-reported issues"
+    },
+    {
+      "name": "Helpful Hero",
+      "icon": "♥",
+      "description": "Received 25 helpful reactions"
+    },
+    {
+      "name": "Open Source",
+      "icon": "⌘",
+      "description": "Merged 5 open-source contributions"
+    },
+    {
+      "name": "Event Champion",
+      "icon": "★",
+      "description": "Attended 8 community events"
+    },
+    {
+      "name": "Mentor",
+      "icon": "✦",
+      "description": "Completed 10 mentoring sessions"
+    },
+    {
+      "name": "Community Builder",
+      "icon": "⬡",
+      "description": "Organized a community initiative"
+    }
+  ],
+  "updated": "7 September 2026"
 }
