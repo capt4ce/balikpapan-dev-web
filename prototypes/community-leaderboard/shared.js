@@ -1,0 +1,6 @@
+let DATA;const badgeIcon={"Bug Hunter":"◈","Helpful Hero":"♥","Open Source":"⌘","Event Champion":"★","Mentor":"✦","Community Builder":"⬡","Rising Star":"↑","7 Day Streak":"⚡","Top 3":"♛","Community Legend":"✺","First Contribution":"✓"};
+fetch('leaderboard.json').then(r=>r.json()).then(d=>{DATA=d;select('weekly')});
+function select(key){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.key===key));document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.key===key));document.querySelector('.range').textContent=DATA.periods[key].range;render(DATA.periods[key].members)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-key]');if(b)select(b.dataset.key)});
+function tabs(){return `<div class="tabs" role="tablist">${[['weekly','Weekly'],['monthly','Monthly'],['yearly','Yearly'],['alltime','All time']].map(([k,l])=>`<button data-key="${k}" role="tab">${l}</button>`).join('')}</div>`}
+function change(n){return n===0?'<span class="muted">—</span>':`<span class="${n>0?'up':'down'}">${n>0?'↑':'↓'} ${Math.abs(n)}</span>`}function badges(xs){return xs.map(x=>`<span class="tag">${badgeIcon[x]||'✦'} ${x}</span>`).join('')}
