@@ -27,3 +27,10 @@ assert.notEqual(
 );
 
 console.log("Leaderboard period and ranking checks passed.");
+
+const leaderboardSource = await readFile(new URL("../src/pages/Leaderboard.tsx", import.meta.url), "utf8");
+for (const badge of data.badgeCatalog) {
+  assert.ok(badge.description, `${badge.name} has a tooltip description`);
+}
+assert.match(leaderboardSource, /TooltipTrigger/, "badges expose hover and focus triggers");
+assert.match(leaderboardSource, /aria-label=.*badge/, "badge triggers are labelled for tap and keyboard users");

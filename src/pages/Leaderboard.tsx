@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import leaderboardData from "@/data/leaderboard.json";
 import { getPodiumMembers, rankMembers } from "@/lib/leaderboard.js";
 
@@ -47,17 +48,25 @@ function MemberBadges({ badges, limit }: { badges: string[]; limit?: number }) {
   return (
     <div className="flex flex-wrap gap-1.5">
       {badges.slice(0, limit).map((badge) => (
-        <Badge
-          key={badge}
-          variant="outline"
-          className="whitespace-nowrap bg-background/70 px-2 py-1 text-[11px] font-medium"
-          title={badgeDescriptions[badge]}
-        >
-          <span aria-hidden="true" className="mr-1">
-            {badgeIcons[badge] ?? "✦"}
-          </span>
-          {badge}
-        </Badge>
+        <Tooltip key={badge} delayDuration={150}>
+          <TooltipTrigger asChild>
+            <button type="button" aria-label={`${badge} badge: ${badgeDescriptions[badge]}`}>
+              <Badge
+                variant="outline"
+                className="cursor-help whitespace-nowrap bg-background/70 px-2 py-1 text-[11px] font-medium"
+              >
+                <span aria-hidden="true" className="mr-1">
+                  {badgeIcons[badge] ?? "✦"}
+                </span>
+                {badge}
+              </Badge>
+            </button>
+          </TooltipTrigger>
+          <TooltipContent className="max-w-64 text-center">
+            <p className="font-semibold">{badge}</p>
+            <p>{badgeDescriptions[badge]}</p>
+          </TooltipContent>
+        </Tooltip>
       ))}
     </div>
   );
