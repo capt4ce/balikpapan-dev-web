@@ -260,7 +260,7 @@ export default function PostDetail() {
     <>
       <SEO
         title={post.title}
-        description={post.content.slice(0, 160).replace(/[#*`>\-]/g, "").trim()}
+        description={post.content.slice(0, 160).replace(/[-#*`>]/g, "").trim()}
         type="article"
         articleMeta={{
           publishedTime: post.publishedAt,
