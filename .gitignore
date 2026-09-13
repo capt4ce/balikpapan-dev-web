@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent tooling (autoskills)
+.agents/
+skills-lock.json

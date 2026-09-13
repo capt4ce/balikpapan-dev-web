@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Balikpapan.dev</title>
-    <description>Balikpapan developer community - helping programmers grow and fostering the tech ecosystem in East Kalimantan</description>
+    <description>Balikpapan developer community — helping programmers grow and fostering the tech ecosystem in East Kalimantan</description>
     <link>https://balikpapan.dev</link>
     <atom:link href="https://balikpapan.dev/rss.xml" rel="self" type="application/rss+xml"/>
     <language>id-ID</language>
     <lastBuildDate>Sat, 28 Sep 2025 00:00:00 GMT</lastBuildDate>
     <generator>Balikpapan.dev</generator>
-    
+
     <item>
       <title>Kickoff: Balikpapan.dev</title>
       <description>Kenapa komunitas ini ada dan cara ikut bergabung dengan kami.</description>
@@ -16,8 +16,10 @@
       <guid>https://balikpapan.dev/posts/1</guid>
       <pubDate>Sun, 01 Sep 2025 00:00:00 GMT</pubDate>
       <author>Team Balikpapan.dev</author>
+      <category>community</category>
+      <category>announcement</category>
     </item>
-    
+
     <item>
       <title>Getting Started with React in 2025</title>
       <description>Panduan lengkap memulai development dengan React untuk pemula.</description>
@@ -25,7 +27,42 @@
       <guid>https://balikpapan.dev/posts/2</guid>
       <pubDate>Mon, 15 Sep 2025 00:00:00 GMT</pubDate>
       <author>Sarah Aisyah</author>
+      <category>react</category>
+      <category>tutorial</category>
     </item>
-    
+
+    <item>
+      <title>Building Scalable APIs with Node.js</title>
+      <description>Best practices untuk membangun REST API yang scalable dan maintainable.</description>
+      <link>https://balikpapan.dev/posts/3</link>
+      <guid>https://balikpapan.dev/posts/3</guid>
+      <pubDate>Sat, 20 Sep 2025 00:00:00 GMT</pubDate>
+      <author>Rizki Pratama</author>
+      <category>nodejs</category>
+      <category>api</category>
+    </item>
+
+    <item>
+      <title>TypeScript Tips untuk Developer JavaScript</title>
+      <description>Tips dan trik menggunakan TypeScript untuk meningkatkan kualitas kode JavaScript.</description>
+      <link>https://balikpapan.dev/posts/4</link>
+      <guid>https://balikpapan.dev/posts/4</guid>
+      <pubDate>Thu, 25 Sep 2025 00:00:00 GMT</pubDate>
+      <author>Ahmad Fauzi</author>
+      <category>typescript</category>
+      <category>javascript</category>
+    </item>
+
+    <item>
+      <title>Introduction to Docker untuk Web Developers</title>
+      <description>Pelajari containerization dengan Docker dan bagaimana menerapkannya dalam development workflow.</description>
+      <link>https://balikpapan.dev/posts/5</link>
+      <guid>https://balikpapan.dev/posts/5</guid>
+      <pubDate>Sun, 28 Sep 2025 00:00:00 GMT</pubDate>
+      <author>Indira Sari</author>
+      <category>docker</category>
+      <category>devops</category>
+    </item>
+
   </channel>
 </rss>

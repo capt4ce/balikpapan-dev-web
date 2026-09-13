@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 */
 
@@ -45,30 +45,23 @@ All colors MUST be HSL.
     --gradient-ocean: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-hero: linear-gradient(135deg, hsl(210 85% 25%), hsl(175 70% 40%));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 30% 97%));
-    
+
     --shadow-elegant: 0 4px 20px -4px hsl(var(--primary) / 0.15);
     --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
     --shadow-card: 0 2px 10px -2px hsl(215 30% 15% / 0.1);
-    
+
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -110,7 +103,7 @@ All colors MUST be HSL.
     --gradient-ocean: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-hero: linear-gradient(135deg, hsl(210 80% 55%), hsl(175 60% 45%));
     --gradient-card: linear-gradient(145deg, hsl(215 35% 12%), hsl(215 30% 15%));
-    
+
     --shadow-elegant: 0 4px 20px -4px hsl(0 0% 0% / 0.4);
     --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.2);
     --shadow-card: 0 2px 10px -2px hsl(0 0% 0% / 0.3);
@@ -132,5 +125,53 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .mesh-gradient {
+    background-image:
+      radial-gradient(at 20% 30%, hsl(var(--primary) / 0.12) 0px, transparent 50%),
+      radial-gradient(at 80% 20%, hsl(175 70% 40% / 0.10) 0px, transparent 50%),
+      radial-gradient(at 50% 80%, hsl(var(--accent) / 0.08) 0px, transparent 50%);
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

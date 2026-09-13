@@ -3,14 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, Calendar, User, Star, Clock } from "lucide-react";
+import { Search, Filter, Calendar, User, Star, Clock, BookOpen, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
+import { Reveal } from "@/components/Reveal";
 
-// Mock data
 const allPosts = [
   {
     id: 1,
+    slug: "kickoff-balikpapan-dev",
     title: "Kickoff: Balikpapan.dev",
     excerpt: "Kenapa komunitas ini ada dan cara ikut bergabung dengan kami.",
     author: "Team Balikpapan.dev",
@@ -21,6 +22,7 @@ const allPosts = [
   },
   {
     id: 2,
+    slug: "getting-started-react-2025",
     title: "Getting Started with React in 2025",
     excerpt: "Panduan lengkap memulai development dengan React untuk pemula.",
     author: "Sarah Aisyah",
@@ -31,6 +33,7 @@ const allPosts = [
   },
   {
     id: 3,
+    slug: "building-scalable-apis-nodejs",
     title: "Building Scalable APIs with Node.js",
     excerpt: "Best practices untuk membangun REST API yang scalable dan maintainable.",
     author: "Rizki Pratama",
@@ -41,6 +44,7 @@ const allPosts = [
   },
   {
     id: 4,
+    slug: "typescript-tips-javascript-developers",
     title: "TypeScript Tips untuk Developer JavaScript",
     excerpt: "Tips dan trik menggunakan TypeScript untuk meningkatkan kualitas kode JavaScript.",
     author: "Ahmad Fauzi",
@@ -51,6 +55,7 @@ const allPosts = [
   },
   {
     id: 5,
+    slug: "introduction-docker-web-developers",
     title: "Introduction to Docker untuk Web Developers",
     excerpt: "Pelajari containerization dengan Docker dan bagaimana menerapkannya dalam development workflow.",
     author: "Indira Sari",
@@ -73,10 +78,10 @@ export default function Posts() {
       const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            post.author.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      const matchesTags = selectedTags.length === 0 || 
+
+      const matchesTags = selectedTags.length === 0 ||
                          selectedTags.some(tag => post.tags.includes(tag));
-      
+
       return matchesSearch && matchesTags;
     })
     .sort((a, b) => {
@@ -98,149 +103,168 @@ export default function Posts() {
     <>
       <SEO
         title="Articles & Tutorials"
-        description="Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan tentang programming, teknologi, dan pengembangan software."
+        description="Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan tentang programming, teknologi, dan pengembangan software di Kalimantan Timur."
       />
       <div className="container py-8 min-h-screen">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">Articles & Tutorials</h1>
-        <p className="text-lg text-muted-foreground">
-          Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan
-        </p>
-      </div>
+      <Reveal>
+        <div className="mb-12">
+          <h1 className="text-4xl font-bold mb-4">Articles & Tutorials</h1>
+          <p className="text-lg text-muted-foreground">
+            Kumpulan artikel, tutorial, dan insights dari komunitas developer Balikpapan
+          </p>
+        </div>
+      </Reveal>
 
       {/* Search and Filters */}
-      <div className="space-y-6 mb-8">
-        {/* Search */}
-        <div className="relative">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Cari artikel, author, atau topik..."
-            className="pl-10"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-
-        {/* Tags Filter */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <Filter className="h-4 w-4" />
-            <span className="text-sm font-medium">Filter by tags:</span>
+      <Reveal delay={100}>
+        <div className="space-y-6 mb-8">
+          {/* Search */}
+          <div className="relative">
+            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+            <Input
+              placeholder="Cari artikel, author, atau topik..."
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search articles"
+            />
           </div>
-          <div className="flex flex-wrap gap-2">
-            {allTags.map((tag) => (
-              <Badge
-                key={tag}
-                variant={selectedTags.includes(tag) ? "default" : "outline"}
-                className="cursor-pointer transition-colors hover:bg-primary hover:text-primary-foreground"
-                onClick={() => toggleTag(tag)}
+
+          {/* Tags Filter */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Filter className="h-4 w-4" aria-hidden="true" />
+              <span className="text-sm font-medium">Filter by tags:</span>
+            </div>
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Tag filters">
+              {allTags.map((tag) => (
+                <Badge
+                  key={tag}
+                  variant={selectedTags.includes(tag) ? "default" : "outline"}
+                  className="cursor-pointer transition-colors hover:bg-primary hover:text-primary-foreground"
+                  onClick={() => toggleTag(tag)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && toggleTag(tag)}
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            {selectedTags.length > 0 && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSelectedTags([])}
+                className="text-muted-foreground"
+                aria-label="Clear all tag filters"
               >
-                {tag}
-              </Badge>
-            ))}
+                <X className="h-3 w-3 mr-1" aria-hidden="true" />
+                Clear filters
+              </Button>
+            )}
           </div>
-          {selectedTags.length > 0 && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSelectedTags([])}
-              className="text-muted-foreground"
-            >
-              Clear filters
-            </Button>
-          )}
-        </div>
 
-        {/* Sort */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">
-            {filteredPosts.length} artikel ditemukan
-          </span>
-          <div className="flex items-center gap-2">
-            <span className="text-sm">Sort by:</span>
-            <Button
-              variant={sortBy === "date" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSortBy("date")}
-            >
-              <Calendar className="h-4 w-4 mr-1" />
-              Date
-            </Button>
-            <Button
-              variant={sortBy === "title" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSortBy("title")}
-            >
-              Title
-            </Button>
+          {/* Sort */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+            <span className="text-sm text-muted-foreground">
+              {filteredPosts.length} artikel ditemukan
+            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm">Sort by:</span>
+              <Button
+                variant={sortBy === "date" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSortBy("date")}
+                aria-pressed={sortBy === "date"}
+              >
+                <Calendar className="h-4 w-4 mr-1" aria-hidden="true" />
+                Date
+              </Button>
+              <Button
+                variant={sortBy === "title" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSortBy("title")}
+                aria-pressed={sortBy === "title"}
+              >
+                Title
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
-      {/* Posts Grid */}
-      <div className="grid gap-6">
-        {filteredPosts.map((post) => (
-          <Card key={post.id} className="group hover:shadow-card transition-all duration-300">
-            <CardHeader>
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
+      {/* Posts Grid — responsive: 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="feed" aria-label="Articles list">
+        {filteredPosts.map((post, index) => (
+          <Reveal key={post.id} delay={index * 60} className="h-full">
+            <Card className="group hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full flex flex-col">
+              {/* Cover — top, full width, responsive */}
+              <div className="aspect-video bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 flex items-center justify-center shrink-0" aria-hidden="true">
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-ocean opacity-80 group-hover:scale-110 transition-transform duration-300">
+                  <BookOpen className="h-7 w-7 text-primary-foreground" />
+                </div>
+              </div>
+
+              <CardHeader className="flex-1">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     {post.pinned && (
                       <Badge variant="secondary" className="text-xs">
-                        <Star className="w-3 h-3 mr-1" />
+                        <Star className="w-3 h-3 mr-1" aria-hidden="true" />
                         Pinned
                       </Badge>
                     )}
-                    <div className="flex gap-2">
-                      {post.tags.map((tag) => (
-                        <Badge key={tag} variant="outline" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
+                    {post.tags.slice(0, 2).map((tag) => (
+                      <Badge key={tag} variant="outline" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
+                  <Link to={`/posts/${post.id}`} aria-label={`Read article: ${post.title}`}>
+                    {post.title}
+                  </Link>
+                </CardTitle>
+
+                <CardDescription className="text-base">
+                  {post.excerpt}
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent>
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <User className="h-4 w-4" aria-hidden="true" />
+                      <span>{post.author}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" aria-hidden="true" />
+                      <time dateTime={post.date}>{post.date}</time>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" aria-hidden="true" />
+                      <span>{post.readTime}</span>
                     </div>
                   </div>
-                  
-                  <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
-                    <Link to={`/posts/${post.id}`}>
-                      {post.title}
+
+                  <Button variant="ghost" size="sm" asChild className="w-fit">
+                    <Link to={`/posts/${post.id}`} aria-label={`Read more about ${post.title}`}>
+                      Read more →
                     </Link>
-                  </CardTitle>
-                  
-                  <CardDescription className="text-base">
-                    {post.excerpt}
-                  </CardDescription>
+                  </Button>
                 </div>
-              </div>
-              
-              <div className="flex items-center justify-between text-sm text-muted-foreground pt-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1">
-                    <User className="h-4 w-4" />
-                    {post.author}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
-                    {post.date}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-4 w-4" />
-                    {post.readTime}
-                  </div>
-                </div>
-                
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to={`/posts/${post.id}`}>
-                    Read more →
-                  </Link>
-                </Button>
-              </div>
-            </CardHeader>
-          </Card>
+              </CardContent>
+            </Card>
+          </Reveal>
         ))}
       </div>
 
       {filteredPosts.length === 0 && (
-        <div className="text-center py-12">
+        <div className="text-center py-12" role="status">
           <p className="text-muted-foreground">No articles found matching your criteria.</p>
           <Button
             variant="ghost"
